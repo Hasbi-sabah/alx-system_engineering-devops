@@ -1,0 +1,2 @@
+#!/bin/bash
+sort -t$'\t' -k7 -nr | head -11 | cut -d'	' -f1
