@@ -1,2 +1,28 @@
-"Everyone is a proponent of strong encryption."
-- Dorothy E. Denning
+bin
+boot
+dev
+etc
+home
+initrd.img
+lib
+lib32
+lib64
+libx32
+lost+found
+media
+mnt
+opt
+proc
+root
+run
+sbin
+srv
+sys
+t
+#t#
+t~
+tmp
+usr
+var
+vmlinuz
+whoareyou

@@ -1,0 +1,2 @@
+#!/bin/bash
+nl | paste -sd "\t\n" | cut -f2 
