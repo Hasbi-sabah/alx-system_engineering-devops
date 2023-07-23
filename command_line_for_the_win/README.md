@@ -8,6 +8,7 @@ File Transfer Using SFTP
 
 4. Navigate to the directory on the sandbox environment where you want to upload the screenshots using the cd command. For example: *cd /path/to/sandbox/directory*.
 5. Use the put command to upload the screenshots from your local machine to the sandbox environment. Provide the full path to each screenshot file you want to upload. For example:
+
 *put /Users/YourUsername/folder/screenshot1.png*
 
 *put /Users/YourUsername/folder/screenshot2.png*
