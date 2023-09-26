@@ -10,8 +10,8 @@ sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
 sudo sed -i -e "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/default
 
 oldstr="=404;"
-newstr="@oui_oui_baguette;\n\t}\n\n\tdefault_type text/html;\n\n\tlocation @oui_oui_baguette {\n\t\treturn 404 \"Ceci n\'est pas une page\";"
+newstr="@oui_oui_baguette;\n\t}\n\n\tlocation @oui_oui_baguette {\n\t\tdefault_type text/html;\n\t\treturn 404 \"Ceci n\'est pas une page\";"
 
-sudo sed -i "s|$oldstr|$newstr|g" /etc/nginx/sites-enabled/default
+sudo sed -i -z "s|$oldstr|$newstr|" /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
