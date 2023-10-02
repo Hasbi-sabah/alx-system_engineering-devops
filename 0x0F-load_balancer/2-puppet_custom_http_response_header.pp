@@ -10,18 +10,7 @@ exec { 'apt-get':
   require => Exec['apt-update'],
 }
 
--> file { '/var/www/html/index.nginx-debian.html':
-  content => 'Hello World!',
-}
-
-file_line { 'add_redirect':
-  path   => '/etc/nginx/sites-enabled/default',
-  after  => 'server_name _;',
-  line   => "\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}",
-  notify => Exec['restart_nginx'],
-}
-
-file_line { 'add_header':
+-> file_line { 'add_header':
   path   => '/etc/nginx/sites-enabled/default',
   after  => "^\tlocation / {",
   line   => "\t\tadd_header X-Served-By \"${::hostname}\";",
