@@ -4,17 +4,17 @@ exec { 'update':
   provider => shell,
 }
 
-exec { 'install':
+-> exec { 'install':
   command => 'sudo apt-get -y install nginx',
   provider => shell,
 }
 
-exec { 'replace':
+-> exec { 'replace':
   command => 'sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default',
   provider => shell,
 }
 
-exec { 'restart':
+-> exec { 'restart':
   command => 'sudo service nginx restart',
   provider => shell,
 }
