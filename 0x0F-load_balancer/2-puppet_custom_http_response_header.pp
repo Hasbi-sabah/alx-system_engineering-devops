@@ -17,21 +17,15 @@ exec { 'apt-get':
 file_line { 'add_redirect':
   path   => '/etc/nginx/sites-enabled/default',
   after  => 'server_name _;',
-  line   => '    location /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}',
+  line   => "\tlocation /redirect_me {return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}",
   notify => Exec['restart_nginx'],
-}
-
-$hostname = exec {'hostname':
-  command => 'hostname'
-  path    => '/usr/bin:/bin',
-  logoutput   => true,
-  refreshonly => true,
 }
 
 file_line { 'add_header':
   path   => '/etc/nginx/sites-enabled/default',
-  after  => 'location / {'
-  line => '     add_header X-Served-By \"${hostname}\";'
+  after  => "^\tlocation / {",
+  line   => "\t\tadd_header X-Served-By \"${::hostname}\";",
+  notify => Exec['restart_nginx'],
 }
 
 exec { 'restart_nginx':
