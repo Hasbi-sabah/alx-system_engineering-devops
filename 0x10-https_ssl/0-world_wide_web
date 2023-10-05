@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Bash script that will display information about subdomains.
+
+extraction_print() {
+	local domain=$1
+	local sub=$2
+	ip=$(dig "$sub"."$domain" | grep -A1 'ANSWER SECTION:' | awk '{print $5}' | tail -1)
+	rec_type=$(dig "$sub"."$domain" | grep -A1 'ANSWER SECTION:' | awk '{print $4}' | tail -1)
+	echo "The subdomain $sub is a $rec_type record and points to $ip"
+}
+if [ $# -eq 2 ]; then
+	extraction_print "$1" "$2"
+else
+	extraction_print "$1" 'www'
+	extraction_print "$1" 'lb-01'
+	extraction_print "$1" 'web-01'
+	extraction_print "$1" 'web-02'
+fi
