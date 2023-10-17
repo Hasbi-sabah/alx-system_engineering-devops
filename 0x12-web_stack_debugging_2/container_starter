@@ -1,16 +1,18 @@
 #!/usr/bin/env bash
 
-apt-get update
-apt-get install -y apache2
+echo "Be patient, this might take a couple minutes.."
+apt-get update 2> /dev/null
+apt-get install -y apache2 2> /dev/null
 
 sed -i "s/80/8080/g" /etc/apache2/sites-available/000-default.conf
 sed -i "s/80/8080/g" /etc/apache2/ports.conf
-service apache2 restart
-rm -r /var/run/apache2/apache2.pid
+service apache2 restart 2> /dev/null
+rm -r /var/run/apache2/apache2.pid 
 
-sudo useradd nginx
-sudo passwd -d nginx
+sudo useradd nginx 2> /dev/null
+sudo passwd -d nginx 2> /dev/null
 
-apt-get install -y nginx
+apt-get install -y nginx 2> /dev/null
 sed -i '1s/^/# /' /etc/nginx/nginx.conf
-service nginx restart
+service nginx restart 2> /dev/null
+echo "All done, start debugging!"
