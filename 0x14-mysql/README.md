@@ -65,14 +65,14 @@ SHOW MASTER STATUS;
 
 CHANGE MASTER TO
 
-MASTER_HOST = '<master server ip>',
+MASTER_HOST = 'master server ip',
 
 MASTER_USER = 'replica_user',
 
-MASTER_PASSWORD = '<replica_user_password>',
+MASTER_PASSWORD = 'replica_user_password',
 
-MASTER_LOG_FILE = '<file>',
+MASTER_LOG_FILE = 'binary_file',
 
-MASTER_LOG_POS = <position>;
+MASTER_LOG_POS = position;
 
 START SLAVE;
