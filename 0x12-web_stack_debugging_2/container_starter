@@ -15,5 +15,10 @@ sudo passwd -d nginx > /dev/null 2>&1
 echo -e "\nAlmost there.."
 apt-get install -y nginx > /dev/null 2>&1
 sed -i '1s/^/# /' /etc/nginx/nginx.conf
+
+sudo chmod 1777 /run
+printf "post-start exec /bin/sleep 0.1\n" | sudo tee /etc/init/nginx.override
+sudo chown -R nginx:nginx /var/log/nginx/
+
 service nginx restart > /dev/null 2>&1
 echo -e "\nAll done, start debugging!"
