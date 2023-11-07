@@ -18,13 +18,10 @@ def top_ten(subreddit):
     url = "http://www.reddit.com/r/{}/hot.json".format(subreddit)
     user_agent = {"User-Agent": "ALX project about advanced api"}
 
-    response = requests.get(url, headers=user_agent).json()
+    response = requests.get(url, params={"limit": 10}, headers=user_agent)
 
-    i = 1
-    for post in response.get('data', {}).get('children', []):
-        if i > 10:
-            break
-        print(post.get('data').get('title'))
-        i += 1
+    if response.status_code == 200:
+        for post in response.json().get('data', {}).get('children', []):
+            print(post.get('data').get('title'))
     else:
         print(None)
