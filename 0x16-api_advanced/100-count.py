@@ -19,7 +19,7 @@ def count_words(subreddit, word_list, hot_dict={}, after=""):
     """
     if subreddit is None:
         return None
-    url = "http://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = "http://www.reddit.com/r/{}/hot.json?limit=100".format(subreddit)
     user_agent = {"User-Agent": "ALX project about advanced api"}
 
     response = requests.get(url, params={"after": after}, headers=user_agent)
