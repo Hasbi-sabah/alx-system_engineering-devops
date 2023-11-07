@@ -32,9 +32,9 @@ def count_words(subreddit, word_list, hot_dict={}, after=""):
                 print('{}: {}'.format(word, occurence))
             return
         for post in response.json().get("data").get("children"):
+            title = post.get("data").get("title").lower()
             for word in word_list:
-                pattern = re.escape(word.lower())
-                target = post.get('data').get('title').lower()
-                if bool(re.search(r'\b{}\b'.format(pattern), target)):
-                    hot_dict[word.lower()] = hot_dict.get(word, 0) + 1
+                word = word.lower()
+                if word in title:
+                    hot_dict[word] = hot_dict.get(word, 0) + 1
         return count_words(subreddit, word_list, hot_dict, after)
