@@ -26,3 +26,5 @@ def top_ten(subreddit):
             break
         print(post.get('data').get('title'))
         i += 1
+    else:
+        print(None)
