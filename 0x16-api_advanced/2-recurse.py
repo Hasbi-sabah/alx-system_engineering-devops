@@ -20,7 +20,7 @@ def recurse(subreddit, hot_list=[], after=""):
     Returns:
         list: A list containing the titles of the top hot posts from the
             specified subreddit.
-            Returns an empty list if the subreddit is not found or an error occurs.
+            Returns an empty list if the subreddit is not found.
     """
     if subreddit is None:
         return None
