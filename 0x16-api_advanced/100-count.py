@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ module of the function count_words """
 
-import requests
 import re
+import requests
 
 
 def count_words(subreddit, word_list, hot_dict={}, after=""):
